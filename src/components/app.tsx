@@ -6,22 +6,23 @@ import Favourites from '../pages/favourites.tsx';
 import Offer from '../pages/offer.tsx';
 import NotFound from '../pages/not_found.tsx';
 import PrivateRoute from './private-route.tsx';
+import {OfferCardType} from '../types/offer_card_type.ts';
 
 type AppProps = {
-  offersNumber: number;
+  offerCards: OfferCardType[];
 }
 
-function App({offersNumber}: AppProps): JSX.Element {
+function App({offerCards}: AppProps): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path={AppRoute.Main} element={<MainScreen offersNumber={offersNumber}/>}/>
+        <Route path={AppRoute.Main} element={<MainScreen offerCards={offerCards}/>}/>
         <Route path={AppRoute.Login} element={<Login/>}/>
         <Route
           path={AppRoute.Favourites}
           element={
-            <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
-              <Favourites/>
+            <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
+              <Favourites favourites={offerCards}/>
             </PrivateRoute>
           }
         />
