@@ -1,15 +1,13 @@
 import {OfferCardType} from '../types/offer_card_type.ts';
-import {MouseEventHandler} from 'react';
 import {Link} from 'react-router-dom';
 
 type OfferCardProps = {
   offerCard: OfferCardType;
-  mouseHandler: MouseEventHandler;
 }
 
-function OfferCard({offerCard, mouseHandler}: OfferCardProps): JSX.Element {
+function OfferCard({offerCard,}: OfferCardProps): JSX.Element {
   return (
-    <article onMouseOver={mouseHandler} className="cities__card place-card">
+    <article className="cities__card place-card">
       {offerCard.isPremium && (
         <div className="place-card__mark">
           <span>Premium</span>
