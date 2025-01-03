@@ -9,6 +9,11 @@ export const OfferCards: OfferCardType[] = [
     image: 'img/apartment-01.jpg',
     rating: 1,
     placeType: PlaceType.Apartment,
+    point: {
+      id: 1,
+      lat: 52.3909553943508,
+      lng: 4.85309666406198
+    },
   },
   {
     id: 2,
@@ -18,6 +23,11 @@ export const OfferCards: OfferCardType[] = [
     image: 'img/room.jpg',
     rating: 4,
     placeType: PlaceType.Room,
+    point: {
+      id: 2,
+      lat: 52.3609553943508,
+      lng: 4.85309666406198
+    },
   },
   {
     id: 3,
@@ -27,6 +37,11 @@ export const OfferCards: OfferCardType[] = [
     image: 'img/apartment-02.jpg',
     rating: 3,
     placeType: PlaceType.Apartment,
+    point: {
+      id: 3,
+      lat: 52.3909553943508,
+      lng: 4.929309666406198
+    },
   },
   {
     id: 4,
@@ -36,5 +51,10 @@ export const OfferCards: OfferCardType[] = [
     image: 'img/apartment-03.jpg',
     rating: 5,
     placeType: PlaceType.Apartment,
+    point: {
+      id:4,
+      lat: 52.3809553943508,
+      lng: 4.939309666406198
+    },
   }
 ];

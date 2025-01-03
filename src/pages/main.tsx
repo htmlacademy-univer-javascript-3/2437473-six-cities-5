@@ -1,5 +1,9 @@
 import {OfferCardType} from '../types/offer_card_type.ts';
 import OfferCardList from '../components/offer_card_list.tsx';
+import {AMSTERDAM} from '../mocks/cities.tsx';
+import Map from '../components/map.tsx';
+import {useState} from 'react';
+import {Point} from '../types/map_types.ts';
 
 
 type MainScreenProps = {
@@ -7,6 +11,16 @@ type MainScreenProps = {
 }
 
 function MainScreen({offerCards}: MainScreenProps): JSX.Element {
+  const points = offerCards.map((offerCard) => offerCard.point);
+  const [selectedPoint, setSelectedPoint] = useState<Point | undefined>(undefined);
+
+  const handleListItemHover = (listItemId: string) => {
+    const currentPoint = points.find((point) => point.id.toString() === listItemId);
+    setSelectedPoint(currentPoint);
+    // eslint-disable-next-line no-console
+    console.error(currentPoint);
+  };
+
   return (
     <div className="page page--gray page--main">
       <header className="header">
@@ -97,11 +111,13 @@ function MainScreen({offerCards}: MainScreenProps): JSX.Element {
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                <OfferCardList offerCards={offerCards} />
+                <OfferCardList offerCards={offerCards} onListItemHover={handleListItemHover}/>
               </div>
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map"></section>
+              <section className="cities__map map">
+                <Map city={AMSTERDAM} points={points} selectedPoint={selectedPoint}/>
+              </section>
             </div>
           </div>
         </div>
